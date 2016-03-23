@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" type="plugin" group="crowdfundingpayment" method="upgrade">
+    <name>PLG_CROWDFUNDINGPAYMENT_PESAPAL</name>
+    <author>Todor Iliev</author>
+    <copyright>Copyright (C) 2016 Todor Iliev ( ITPrism.com ). All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.en.html GNU/GPLv3</license>
+    <authorEmail>todor@itprism.com</authorEmail>
+    <authorUrl>http://itprism.com</authorUrl>
+    <version>1.0-beta</version>
+    <creationDate>23 March, 2016</creationDate>
+    <description><![CDATA[
+    <p>Crowdfunding Payment - PesaPal is a plugin that enables payments via PesaPal.</p>
+    <p><a href='http://itprism.com/' target='_blank'>Subscribe for the newsletter</a> to receive information about updates and new ITPrism extensions.</p>
+    <p>Please, <a href='http://extensions.joomla.org/extensions/extension/e-commerce/donations/crowdfunding' target='_blank'>vote for the extension</a> on Joomla! Extensions Directory</p>
+    ]]></description>
+
+    <help url="PLG_CROWDFUNDINGPAYMENT_PESAPAL_HELP_URL"/>
+
+    <files>
+        <filename plugin="pesapal">pesapal.php</filename>
+
+        <folder>images</folder>
+        <folder>language</folder>
+    </files>
+
+    <config>
+        <fields name="params" addfieldpath="/administrator/components/com_crowdfunding/models/fields">
+            <fieldset name="basic">
+    	        <field name="consumer_key"  type="text" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_KEY" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_KEY_DESC" required="true" class="input-xxlarge" />
+				<field name="consumer_secret"  type="text" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_SECRET" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_SECRET_DESC" required="true" class="input-xxlarge" />
+    	        <field name="merchant_url" type="text" default="https://www.pesapal.com/API/PostPesapalDirectOrderV4" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_MERCHANT_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_MERCHANT_URL_DESC" class="input-xxlarge" />
+    	        <field name="return_url" type="textarea" default="index.php?option=com_crowdfunding&amp;task=payments.completeCheckout&amp;payment_service=pesapal" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL_DESC" class="input-xxlarge" />
+    	        <field name="callback_url" type="cfurl" default="index.php?option=com_crowdfunding&amp;task=notifier.notify&amp;format=raw&amp;payment_service=pesapal" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CALLBACK_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CALLBACK_URL_DESC" class="input-xxlarge" />
+			</fieldset>
+
+            <fieldset name="testmode" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_TEST_MODE">
+                <field name="test_enabled" type="radio" default="1" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_ENABLE_TEST_MODE" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_ENABLE_TEST_MODE_DESC" class="btn-group">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="test_merchant_url" type="text" default="http://demo.pesapal.com/api/PostPesapalDirectOrderV4" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_TEST_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_TEST_URL_DESC" class="input-xxlarge" />
+            </fieldset>
+            
+            <fieldset name="emails" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_NOTIFICATION_EMAILS" addfieldpath="/administrator/components/com_emailtemplates/models/fields">
+                <field name="admin_mail_id" type="emailtemplate" default="0" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_ADMIN" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_ADMIN_DESC" class="btn-group" />
+                <field name="creator_mail_id" type="emailtemplate" default="0" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_CREATOR" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_CREATOR_DESC" class="btn-group" />
+                <field name="user_mail_id" type="emailtemplate" default="0" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_USER" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_SEND_MAIL_USER_DESC" class="btn-group" />
+
+                <field name="email_mode" type="list" default="html" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_EMAIL_MODE" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_EMAIL_MODE_DESC" >
+                   <option value="plain">PLG_CROWDFUNDINGPAYMENT_PESAPAL_PLAIN</option>
+                   <option value="html">PLG_CROWDFUNDINGPAYMENT_PESAPAL_HTML</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
