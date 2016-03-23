@@ -335,7 +335,7 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
                 // If it is complete, continue with process transaction data
                 $transactionData = $this->storeTransaction($validData, $project);
                 if ($transactionData === null) {
-                    $db->transactionRollback();
+                    $db->transactionCommit();
                     return $result;
                 }
 
