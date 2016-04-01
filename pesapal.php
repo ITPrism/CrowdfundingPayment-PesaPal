@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('Prism.init');
 jimport('Crowdfunding.init');
-jimport('EmailTemplates.init');
+jimport('Emailtemplates.init');
 jimport('Prism.libs.PesaPal.OAuth');
 
 /**
@@ -115,8 +115,8 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
         // Store data in payment session.
         $paymentSession->setOrderId($orderId);
-        $paymentSession->setData('amount', $amount);
-        $paymentSession->setData('currency_code', $item->currencyCode);
+        $paymentSession->setData('pesapal.amount', $amount);
+        $paymentSession->setData('pesapal.currency_code', $item->currencyCode);
         $paymentSession->store();
 
         // DEBUG DATA
@@ -170,7 +170,7 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
             // Get name and email from anonymous data records.
             if ($paymentSession->isAnonymous() and JComponentHelper::isEnabled('com_crowdfundingdata')) {
-                $user = new CrowdfundingData\Record(JFactory::getDbo());
+                $user = new Crowdfundingdata\Record(JFactory::getDbo());
                 $user->load(array('session_id' => $paymentSession->getAnonymousUserId()));
                 if ($user->getId()) {
 
@@ -530,8 +530,8 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
             'service_provider' => $this->serviceProvider,
             'service_alias'    => $this->serviceAlias,
             'txn_id'           => $paymentSession->getOrderId(),
-            'txn_amount'       => $paymentSession->getData('amount'),
-            'txn_currency'     => $paymentSession->getData('currency_code'),
+            'txn_amount'       => $paymentSession->getData('pesapal.amount'),
+            'txn_currency'     => $paymentSession->getData('pesapal.currency_code'),
             'txn_status'       => $txnStatus,
             'txn_date'         => $date->toSql()
         );
