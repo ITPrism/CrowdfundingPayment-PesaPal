@@ -111,7 +111,7 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
         $lastName  = $userData['last_name']; //[optional]
         $email     = $userData['email'];
 
-        $postXml = '<?xml version="1.0" encoding="utf-8"?><PesapalDirectOrderInfo xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Amount="' . $amount . '" Description="' . $desc . '" Type="' . $type . '" Reference="' . $reference . '" FirstName="' . $firstName . '" LastName="' . $lastName . '" Email="' . $email . '" xmlns="http://www.pesapal.com" />';
+        $postXml = '<?xml version="1.0" encoding="utf-8"?><PesapalDirectOrderInfo xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Amount="' . $amount . '" Currency="'.$item->currencyCode.'" Description="' . $desc . '" Type="' . $type . '" Reference="' . $reference . '" FirstName="' . $firstName . '" LastName="' . $lastName . '" Email="' . $email . '" xmlns="http://www.pesapal.com" />';
 
         // Store data in payment session.
         $paymentSession->setOrderId($orderId);
@@ -167,13 +167,11 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
         $user = JFactory::getUser();
         if (!$user->get('id')) {
-
             // Get name and email from anonymous data records.
             if ($paymentSession->isAnonymous() and JComponentHelper::isEnabled('com_crowdfundingdata')) {
                 $user = new Crowdfundingdata\Record(JFactory::getDbo());
                 $user->load(array('session_id' => $paymentSession->getAnonymousUserId()));
                 if ($user->getId()) {
-
                     $userNames            = explode(' ', $user->getName());
                     $result['first_name'] = Joomla\Utilities\ArrayHelper::getValue($userNames, 0, '', 'string');
                     $result['last_name']  = Joomla\Utilities\ArrayHelper::getValue($userNames, 1, '', 'string');
@@ -261,7 +259,6 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
         JDEBUG ? $this->log->add(JText::_($this->textPrefix . '_DEBUG_DATA'), $this->debugType, $data) : null;
 
         if ($data !== null) {
-
             // Get currency
             $currency = Crowdfunding\Currency::getInstance(JFactory::getDbo(), $params->get('project_currency'));
 
@@ -308,7 +305,6 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
             // Check for valid project
             if (!$project->getId()) {
-
                 // Log data in the database
                 $this->log->add(
                     JText::_($this->textPrefix . '_ERROR_INVALID_PROJECT'),
@@ -538,7 +534,6 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
         // Check Project ID and Transaction ID
         if (!$transaction['project_id'] or !$transaction['txn_id']) {
-
             // Log data in the database
             $this->log->add(
                 JText::_($this->textPrefix . '_ERROR_INVALID_TRANSACTION_DATA'),
@@ -551,7 +546,6 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
 
         // Check currency
         if (strcmp($transaction['txn_currency'], $options['currency_code']) !== 0) {
-
             // Log data in the database
             $this->log->add(
                 JText::_($this->textPrefix . '_ERROR_INVALID_TRANSACTION_CURRENCY'),

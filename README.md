@@ -1,6 +1,6 @@
 CrowdfundingPayment - PesaPal
 ==================================
-( Version 1.0 )
+( Version 1.1 )
 - - -
 
 This is a payment plugin that enables payments via PesaPal.
@@ -10,3 +10,6 @@ This is a payment plugin that enables payments via PesaPal.
 
 Changelog
 ---------
+
+###v1.1
+* Added a currency to the request.
