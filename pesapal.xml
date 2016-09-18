@@ -53,4 +53,8 @@
             </fieldset>
         </fields>
     </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="CrowdfundingPayment - PesaPal ( from CDN )">http://cdn.itprism.com/updates/crowdfunding/plugins/plg_crowdfundingpayment_pesapal.xml</server>
+    </updateservers>
 </extension>

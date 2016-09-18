@@ -12,7 +12,8 @@ Changelog
 ---------
 
 ###v1.2
-* It was made compitable with Crowdfunding v2.5
+* It was made compatible with Crowdfunding v2.5
+* It was added update server.
 
 ###v1.1
 * Added a currency to the request.
