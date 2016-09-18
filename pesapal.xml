@@ -6,10 +6,10 @@
     <license>http://www.gnu.org/licenses/gpl-3.0.en.html GNU/GPLv3</license>
     <authorEmail>todor@itprism.com</authorEmail>
     <authorUrl>http://itprism.com</authorUrl>
-    <version>1.1</version>
-    <creationDate>06 September, 2016</creationDate>
+    <version>1.2</version>
+    <creationDate>18 September, 2016</creationDate>
     <description><![CDATA[
-    <p>Crowdfunding Payment - PesaPal is a plugin that enables payments via PesaPal.</p>
+    <p>CrowdfundingPayment - PesaPal is a plugin that enables payments via PesaPal.</p>
     <p><a href='http://itprism.com/' target='_blank'>Subscribe for the newsletter</a> to receive information about updates and new ITPrism extensions.</p>
     <p>Please, <a href='http://extensions.joomla.org/extensions/extension/e-commerce/donations/crowdfunding' target='_blank'>vote for the extension</a> on Joomla! Extensions Directory</p>
     ]]></description>
@@ -29,7 +29,7 @@
     	        <field name="consumer_key"  type="text" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_KEY" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_KEY_DESC" required="true" class="input-xxlarge" />
 				<field name="consumer_secret"  type="text" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_SECRET" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CONSUMER_SECRET_DESC" required="true" class="input-xxlarge" />
     	        <field name="merchant_url" type="text" default="https://www.pesapal.com/API/PostPesapalDirectOrderV4" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_MERCHANT_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_MERCHANT_URL_DESC" class="input-xxlarge" />
-    	        <field name="return_url" type="textarea" default="index.php?option=com_crowdfunding&amp;task=payments.completeCheckout&amp;payment_service=pesapal" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL_DESC" class="input-xxlarge" />
+    	        <field name="return_url" type="cfurl" default="index.php?option=com_crowdfunding&amp;task=payments.completeCheckout&amp;payment_service=pesapal" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_RETURN_URL_DESC" class="input-xxlarge" />
     	        <field name="callback_url" type="cfurl" default="index.php?option=com_crowdfunding&amp;task=notifier.notify&amp;format=raw&amp;payment_service=pesapal" label="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CALLBACK_URL" description="PLG_CROWDFUNDINGPAYMENT_PESAPAL_CALLBACK_URL_DESC" class="input-xxlarge" />
 			</fieldset>
 
