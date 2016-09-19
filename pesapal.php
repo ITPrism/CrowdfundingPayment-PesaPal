@@ -347,13 +347,8 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
             // Generate data object, based on the payment session properties.
             $paymentResult->paymentSession = $paymentSessionRemote;
 
-            // If transaction is COMPLETED.
-
-            // Close payment session and remove intention.
-            // Prepare the flag for removing intention.
-            $removeIntention  = (strcmp('completed', $transaction->getStatus()) === 0 or strcmp('pending', $transaction->getStatus()) === 0);
-
-            $this->closePaymentSession($paymentSessionRemote, $removeIntention);
+            // Removing intention.
+            $this->removeIntention($paymentSessionRemote, $transaction);
         }
 
         return $paymentResult;
