@@ -318,11 +318,6 @@ class plgCrowdfundingPaymentPesapal extends Crowdfunding\Payment\Plugin
             $reward = null;
             if ($validData['reward_id']) {
                 $reward = $containerHelper->fetchReward($this->container, $validData['reward_id'], $project->getId());
-
-                // Check for valid reward ID.
-                if (!$reward) {
-                    $validData['reward_id'] = 0;
-                }
             }
 
             // Save transaction data.
